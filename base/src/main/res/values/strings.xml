@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MovieCataloge</string>
+    <string name="movies">Movie</string>
+    <string name="tvshow">TV Show</string>
+    <string name="title_movie">Movie</string>
+    <string name="title_tvshow">TV Show</string>
+    <string name="hd">HD</string>
+    <string name="rating">rating</string>
+    <string name="image_recycler">image_recycler</string>
+    <string name="date">date</string>
+    <string name="image_main">Image Main</string>
+    <string name="image_second">Image Second</string>
+    <string name="rilis_date">Release Date :</string>
+    <string name="overview">Overview</string>
+    <string name="text_content">Text Content</string>
+    <string name="sharedView">Shared View</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="favorite">Favorite</string>
+    <string name="menu_favorite">Menu Favorite</string>
+</resources>

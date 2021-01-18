@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.moviecatalogue.detail">
+    <application>
+        <activity android:name=".DetailMovieActivity">
+            <intent-filter>
+                <action android:name="com.example.moviecatalogue.detail.DetailMovieActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".DetailTvshowActivity">
+            <intent-filter>
+                <action android:name="com.example.moviecatalogue.detail.DetailTvshowActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+    </application>
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/title_detail">
+        <dist:delivery>
+            <dist:install-time />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
+</manifest>
