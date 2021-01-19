@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import com.example.moviecatalogue.favorite.adapter.SectionsPagerAdapter
 import com.example.moviecatalogue.favorite.di.favoriteModule
 import kotlinx.android.synthetic.main.fragment_favorite.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.core.context.loadKoinModules
 
+@ExperimentalCoroutinesApi
 class FavoriteFragment : Fragment() {
 
     override fun onCreateView(

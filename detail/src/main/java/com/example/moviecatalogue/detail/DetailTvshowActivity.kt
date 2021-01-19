@@ -15,9 +15,11 @@ import com.example.moviecatalogue.detail.di.tvshowModule
 import com.example.moviecatalogue.detail.viewmodel.DetailTvshowViewModel
 import kotlinx.android.synthetic.main.activity_detail_tvshow.*
 import kotlinx.android.synthetic.main.rate_star.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
+@ExperimentalCoroutinesApi
 class DetailTvshowActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_TVSHOW = "extra_tvshow"

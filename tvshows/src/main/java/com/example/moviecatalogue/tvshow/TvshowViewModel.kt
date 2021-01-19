@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
 import com.example.moviecatalogue.core.utils.TvshowDataMapper
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
@@ -19,6 +20,7 @@ class TvshowViewModel (val catalogueUseCase: CatalogueUseCase) :
     val isLoading: LiveData<Boolean> = _isLoading
     val tvshow:LiveData<List<com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation>> = _tvshow
 
+    @ExperimentalCoroutinesApi
     fun getTvshow(){
         viewModelScope.launch {
             catalogueUseCase.getAllTvshows()

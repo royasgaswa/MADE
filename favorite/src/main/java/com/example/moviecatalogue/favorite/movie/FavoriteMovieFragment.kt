@@ -9,9 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecatalogue.favorite.R
 import kotlinx.android.synthetic.main.fragment_favorite_movie.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
+@ExperimentalCoroutinesApi
 class FavoriteMovieFragment : Fragment() {
 
     override fun onCreateView(

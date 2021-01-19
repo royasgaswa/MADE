@@ -15,9 +15,11 @@ import com.example.moviecatalogue.detail.di.movieModule
 import com.example.moviecatalogue.detail.viewmodel.DetailMovieViewModel
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.rate_star.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
+@ExperimentalCoroutinesApi
 class DetailMovieActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_MOVIE = "extra_movie"

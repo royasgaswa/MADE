@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.moviecataloge.R
 import com.example.moviecatalogue.favorite.movie.FavoriteMovieFragment
 import com.example.moviecatalogue.favorite.tvshow.FavoriteTvshowFragment
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+
 
 class SectionsPagerAdapter(private val mContext: Fragment, fm: FragmentManager) :
     FragmentStatePagerAdapter(
@@ -18,6 +20,7 @@ class SectionsPagerAdapter(private val mContext: Fragment, fm: FragmentManager) 
         private val TAB_TITLES = intArrayOf(R.string.movies, R.string.tvshow)
     }
 
+    @ExperimentalCoroutinesApi
     override fun getItem(position: Int): Fragment =
         when (position) {
             0 -> FavoriteMovieFragment()

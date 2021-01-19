@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
 import com.example.moviecatalogue.core.utils.MovieDataMapper
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
@@ -19,6 +20,7 @@ class MovieViewModel (val catalogueUseCase: CatalogueUseCase) :
     private val _movie=MutableLiveData<List<com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation>>()
     val isLoading:LiveData<Boolean> = _isLoading
     val movie:LiveData<List<com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation>> = _movie
+    @ExperimentalCoroutinesApi
     fun getMovies(){
         viewModelScope.launch {
             catalogueUseCase.getAllMovies()

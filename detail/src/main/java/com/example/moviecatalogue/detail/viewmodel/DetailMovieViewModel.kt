@@ -9,11 +9,13 @@ import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.model.MovieEntityDomain
 import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
 import com.example.moviecatalogue.core.utils.MovieDataMapper
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class DetailMovieViewModel (val catalogueUseCase: CatalogueUseCase) :
     ViewModel() {
     private var movieId = MutableLiveData<Int>()
