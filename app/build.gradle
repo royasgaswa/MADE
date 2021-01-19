@@ -18,7 +18,7 @@ android {
     }
     lintOptions {
         abortOnError false
-    }c
+    }
     defaultConfig {
         applicationId "com.example.moviecataloge"
         minSdkVersion 21
