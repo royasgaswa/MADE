@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_tvshow.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,12 +29,12 @@ class TvshowFragment : Fragment() {
             val tvshowAdapter = com.example.moviecatalogue.base.presentation.adapter.TvshowAdapter()
             progress_bar.visibility = View.VISIBLE
             viewModel.getTvshow()
-            viewModel.isLoading.observe(viewLifecycleOwner,{state->
+            viewModel.isLoading.observe(viewLifecycleOwner, Observer{ state->
                 if (!state){
                     progress_bar.visibility=View.GONE
                 }
             })
-            viewModel.tvshow.observe(viewLifecycleOwner,{
+            viewModel.tvshow.observe(viewLifecycleOwner, Observer{
                 tvshowAdapter.setData(it)
                 tvshowAdapter.notifyDataSetChanged()
                 rv_tvshow.scheduleLayoutAnimation()

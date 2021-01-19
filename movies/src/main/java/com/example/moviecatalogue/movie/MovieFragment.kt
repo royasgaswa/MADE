@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_movie.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,12 +29,12 @@ class MovieFragment : Fragment() {
             val movieAdapter = com.example.moviecatalogue.base.presentation.adapter.MovieAdapter()
             progress_bar.visibility = View.VISIBLE
             viewModel.getMovies()
-            viewModel.movie.observe(viewLifecycleOwner,{movie->
+            viewModel.movie.observe(viewLifecycleOwner, Observer{ movie->
                 movieAdapter.setData(movie)
                 movieAdapter.notifyDataSetChanged()
                 rv_movie.scheduleLayoutAnimation()
             })
-            viewModel.isLoading.observe(viewLifecycleOwner, { state ->
+            viewModel.isLoading.observe(viewLifecycleOwner, Observer{ state ->
                 if (!state) {
                     progress_bar.visibility = View.GONE
                 }

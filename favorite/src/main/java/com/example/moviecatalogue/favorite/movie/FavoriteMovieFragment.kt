@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecatalogue.favorite.R
 import kotlinx.android.synthetic.main.fragment_favorite_movie.*
@@ -29,12 +30,12 @@ class FavoriteMovieFragment : Fragment() {
                 com.example.moviecatalogue.base.presentation.adapter.MovieAdapter()
             progress_bar.visibility = View.VISIBLE
             viewModel.getFavoriteMovies()
-            viewModel.isLoading.observe(viewLifecycleOwner,{state->
+            viewModel.isLoading.observe(viewLifecycleOwner, Observer{ state->
                 if (!state){
                     progress_bar.visibility=View.GONE
                 }
             })
-            viewModel.movie.observe(viewLifecycleOwner,{
+            viewModel.movie.observe(viewLifecycleOwner, Observer{
                 progress_bar.visibility = View.GONE
                 movieFavoriteAdapter.setData(it)
                 movieFavoriteAdapter.notifyDataSetChanged()

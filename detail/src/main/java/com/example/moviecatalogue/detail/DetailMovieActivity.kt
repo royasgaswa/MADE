@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviecatalogue.detail.animation.SharedElementViewProvider
@@ -39,12 +40,12 @@ class DetailMovieActivity : AppCompatActivity() {
             val movieId = extras.getInt(EXTRA_MOVIE)
             viewModel.setSelectedMovie(movieId)
             viewModel.getDetailMovie()
-            viewModel.isLoading.observe(this,{state->
+            viewModel.isLoading.observe(this, Observer{ state->
                 if (!state){
                     progress_bar.visibility=View.GONE
                 }
             })
-            viewModel.movie.observe(this,{
+            viewModel.movie.observe(this, Observer{
                 populateMovie(it)
             })
         }
