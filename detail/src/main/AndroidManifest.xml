@@ -3,18 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.moviecatalogue.detail">
     <application>
-        <activity android:name=".DetailMovieActivity">
+        <activity android:name=".DetailMovieActivity" android:label="@string/movies">
             <intent-filter>
                 <action android:name="com.example.moviecatalogue.detail.DetailMovieActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.moviecataloge.presentation.ui.home.MainActivity" />
         </activity>
-        <activity android:name=".DetailTvshowActivity">
+        <activity android:name=".DetailTvshowActivity" android:label="@string/tvshow">
             <intent-filter>
                 <action android:name="com.example.moviecatalogue.detail.DetailTvshowActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.moviecataloge.presentation.ui.home.MainActivity" />
         </activity>
+
     </application>
     <dist:module
         dist:instant="false"
