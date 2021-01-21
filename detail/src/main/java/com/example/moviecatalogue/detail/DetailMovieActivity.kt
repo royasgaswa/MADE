@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation
 import com.example.moviecatalogue.detail.animation.SharedElementViewProvider
 import com.example.moviecatalogue.detail.di.movieModule
 import com.example.moviecatalogue.detail.viewmodel.DetailMovieViewModel
@@ -53,7 +54,7 @@ class DetailMovieActivity : AppCompatActivity() {
         }
     }
 
-    fun populateMovie(movie: com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation) {
+    fun populateMovie(movie: MovieEntityPresentation) {
         tv_title_movie.text = movie.title
         rating.text = movie.rate
         tv_date_movie.text = movie.releaseDate

@@ -10,15 +10,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviecatalogue.base.R
 import com.example.moviecatalogue.base.presentation.CastedContex
-import com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation
+import com.example.moviecatalogue.base.presentation.model.TvShowEntityPresentation
 import kotlinx.android.synthetic.main.items_tvshow.view.*
 
 class TvshowAdapter :
     RecyclerView.Adapter<TvshowAdapter.TvshowViewHolder>() {
 
-    private var listData=ArrayList<TvshowEntityPresentation>()
+    private var listData=ArrayList<TvShowEntityPresentation>()
 
-    fun setData(newListData:List<TvshowEntityPresentation>?){
+    fun setData(newListData:List<TvShowEntityPresentation>?){
         if(newListData == null)return
         listData.clear()
         listData.addAll(newListData)
@@ -43,13 +43,13 @@ class TvshowAdapter :
         companion object {
             const val EXTRA_TVSHOW = "extra_tvshow"
         }
-        fun bind(tvshow: TvshowEntityPresentation) {
+        fun bind(tvShow: TvShowEntityPresentation) {
             with(itemView) {
-                tv_title_tvShow.text = tvshow.name
-                tv_date_tvshow.text = tvshow.firstAirDate
+                tv_title_tvShow.text = tvShow.name
+                tv_date_tvshow.text = tvShow.firstAirDate
                 setOnClickListener {
                     val intent = Intent(context, Class.forName("com.example.moviecatalogue.detail.DetailTvshowActivity")).apply {
-                        putExtra(EXTRA_TVSHOW, tvshow.id)
+                        putExtra(EXTRA_TVSHOW, tvShow.id)
                     }
                     val option = ActivityOptions.makeSceneTransitionAnimation(
                         CastedContex.scanForActivity(context),
@@ -59,7 +59,7 @@ class TvshowAdapter :
                     context.startActivity(intent, option.toBundle())
                 }
                 Glide.with(context)
-                    .load("https://image.tmdb.org/t/p/w500/"+tvshow.posterPath)
+                    .load("https://image.tmdb.org/t/p/w500/"+tvShow.posterPath)
                     .apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
                             .error(R.drawable.ic_error)

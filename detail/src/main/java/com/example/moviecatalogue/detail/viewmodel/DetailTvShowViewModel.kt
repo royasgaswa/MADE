@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.moviecatalogue.base.presentation.model.TvShowEntityPresentation
 import com.example.moviecatalogue.core.data.vo.Resource
-import com.example.moviecatalogue.core.domain.model.TvshowEntityDomain
+import com.example.moviecatalogue.core.domain.model.TvShowEntityDomain
 import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
 import com.example.moviecatalogue.core.utils.TvshowDataMapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,21 +16,21 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class DetailTvshowViewModel (val catalogueUseCase: CatalogueUseCase) :
+class DetailTvShowViewModel (val catalogueUseCase: CatalogueUseCase) :
     ViewModel() {
-    private var tvshowId = MutableLiveData<Int>()
+    private var tvShowId = MutableLiveData<Int>()
     private val _isLoading= MutableLiveData<Boolean>()
-    private val _tvshow= MutableLiveData<com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation>()
+    private val _tvShow= MutableLiveData<TvShowEntityPresentation>()
     val isLoading:LiveData<Boolean> = _isLoading
-    val tvshow:LiveData<com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation> = _tvshow
+    val tvShow:LiveData<TvShowEntityPresentation> = _tvShow
 
     fun setSelectedTvshow(tvshowId: Int?) {
-        this.tvshowId.value = tvshowId
+        this.tvShowId.value = tvshowId
     }
 
     fun getDetailTvshow(){
         viewModelScope.launch {
-            catalogueUseCase.getDetailTvshow(tvshowId.value)
+            catalogueUseCase.getDetailTvshow(tvShowId.value)
                 .onStart { _isLoading.postValue(true) }
                 .onCompletion { _isLoading.postValue(false) }
                 .collect { tvshow->
@@ -38,9 +39,9 @@ class DetailTvshowViewModel (val catalogueUseCase: CatalogueUseCase) :
                         is Resource.Success -> if (tvshow.data != null) {
                             tvshow.data.let {
                                 _isLoading.postValue(false)
-                                val listData=ArrayList<TvshowEntityDomain>()
+                                val listData=ArrayList<TvShowEntityDomain>()
                                 it?.let { it1 -> listData.add(it1) }
-                                _tvshow.postValue(TvshowDataMapper.mapDomainToPresentation(listData)[0])
+                                _tvShow.postValue(TvshowDataMapper.mapDomainToPresentation(listData)[0])
                             }
                         }
                         is Resource.Error -> {
@@ -51,7 +52,7 @@ class DetailTvshowViewModel (val catalogueUseCase: CatalogueUseCase) :
         }
     }
     fun setFavorite() {
-        val tvshowResource = tvshow.value
+        val tvshowResource = tvShow.value
         if (tvshowResource != null) {
             val dataTvshow = TvshowDataMapper.mapPresentationToDomain(tvshowResource)
             val newstate = !dataTvshow.isFavorite

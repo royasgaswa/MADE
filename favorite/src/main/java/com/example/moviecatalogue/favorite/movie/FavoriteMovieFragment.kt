@@ -38,9 +38,15 @@ class FavoriteMovieFragment : Fragment() {
             })
             viewModel.movie.observe(viewLifecycleOwner, Observer{
                 progress_bar.visibility = View.GONE
+                if (it.isNotEmpty()){
+                    pg_empty.visibility=View.GONE
+                    rv_favorite_movie.scheduleLayoutAnimation()
+                }else{
+                    pg_empty.visibility=View.VISIBLE
+                }
                 movieFavoriteAdapter.setData(it)
                 movieFavoriteAdapter.notifyDataSetChanged()
-                rv_favorite_movie.scheduleLayoutAnimation()
+
             })
             with(rv_favorite_movie) {
                 layoutManager = GridLayoutManager(context, 2)

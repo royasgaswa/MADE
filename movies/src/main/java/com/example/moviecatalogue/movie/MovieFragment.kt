@@ -32,9 +32,15 @@ class MovieFragment : Fragment() {
             progress_bar.visibility = View.VISIBLE
             viewModel.getMovies()
             viewModel.movie.observe(viewLifecycleOwner, Observer{ movie->
-                movieAdapter.setData(movie)
-                movieAdapter.notifyDataSetChanged()
-                rv_movie.scheduleLayoutAnimation()
+                if (movie!=null){
+                    pg_empty.visibility=View.GONE
+                    movieAdapter.setData(movie)
+                    movieAdapter.notifyDataSetChanged()
+                    rv_movie.scheduleLayoutAnimation()
+                }else{
+                    pg_empty.visibility=View.VISIBLE
+                }
+
             })
             viewModel.isLoading.observe(viewLifecycleOwner, Observer{ state ->
                 if (!state) {

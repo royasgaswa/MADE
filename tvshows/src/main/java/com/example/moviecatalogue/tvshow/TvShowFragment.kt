@@ -13,8 +13,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
 @ExperimentalCoroutinesApi
-class TvshowFragment : Fragment() {
-    private val viewModel: TvshowViewModel by viewModel()
+class TvShowFragment : Fragment() {
+    private val viewModel: TvShowViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,20 +26,25 @@ class TvshowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadKoinModules(tvshowModule)
+        loadKoinModules(tvShowModule)
         if (activity != null) {
             val tvshowAdapter = com.example.moviecatalogue.base.presentation.adapter.TvshowAdapter()
             progress_bar.visibility = View.VISIBLE
-            viewModel.getTvshow()
+            viewModel.getTvShow()
             viewModel.isLoading.observe(viewLifecycleOwner, Observer{ state->
                 if (!state){
                     progress_bar.visibility=View.GONE
                 }
             })
-            viewModel.tvshow.observe(viewLifecycleOwner, Observer{
-                tvshowAdapter.setData(it)
-                tvshowAdapter.notifyDataSetChanged()
-                rv_tvshow.scheduleLayoutAnimation()
+            viewModel.tvShow.observe(viewLifecycleOwner, Observer{data->
+                if (data!=null){
+                    pg_empty.visibility=View.GONE
+                    tvshowAdapter.setData(data)
+                    tvshowAdapter.notifyDataSetChanged()
+                    rv_tvshow.scheduleLayoutAnimation()
+                }else{
+                    pg_empty.visibility=View.VISIBLE
+                }
             })
 
             with(rv_tvshow) {

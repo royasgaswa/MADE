@@ -1,11 +1,8 @@
 package com.example.moviecatalogue.core.data.source.remote.response.tvshow
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class TvshowResponse(
+data class TvShowResponse(
 
     @field:SerializedName("id")
     val id: Int? = null,
@@ -28,4 +25,4 @@ data class TvshowResponse(
     @field:SerializedName("backdrop_path")
     val backdropPath: String? = null
 
-) : Parcelable
+)

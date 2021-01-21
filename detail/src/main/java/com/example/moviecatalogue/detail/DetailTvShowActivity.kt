@@ -10,9 +10,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.moviecatalogue.base.presentation.model.TvShowEntityPresentation
 import com.example.moviecatalogue.detail.animation.SharedElementViewProvider
-import com.example.moviecatalogue.detail.di.tvshowModule
-import com.example.moviecatalogue.detail.viewmodel.DetailTvshowViewModel
+import com.example.moviecatalogue.detail.di.tvShowModule
+import com.example.moviecatalogue.detail.viewmodel.DetailTvShowViewModel
 import kotlinx.android.synthetic.main.activity_detail_tvshow.*
 import kotlinx.android.synthetic.main.rate_star.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,12 +21,12 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
 @ExperimentalCoroutinesApi
-class DetailTvshowActivity : AppCompatActivity() {
+class DetailTvShowActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_TVSHOW = "extra_tvshow"
     }
 
-    private val viewModel: DetailTvshowViewModel by viewModel()
+    private val viewModel: DetailTvShowViewModel by viewModel()
     private var menu: Menu? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         SharedElementViewProvider(
@@ -34,7 +35,7 @@ class DetailTvshowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_tvshow)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        loadKoinModules(tvshowModule)
+        loadKoinModules(tvShowModule)
         val extras = intent.extras
         progress_bar.visibility = View.VISIBLE
         if (extras != null) {
@@ -46,34 +47,34 @@ class DetailTvshowActivity : AppCompatActivity() {
                     progress_bar.visibility=View.GONE
                 }
             })
-            viewModel.tvshow.observe(this, Observer{
+            viewModel.tvShow.observe(this, Observer{
                 populateTvshow(it)
             })
         }
     }
 
-    fun populateTvshow(tvshow: com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation) {
-        Log.d("tes", tvshow.firstAirDate + " " + tvshow.name)
-        tv_title_tvshow.text = tvshow.name
-        date_tvshow.text = tvshow.firstAirDate
+    fun populateTvshow(tvShow: TvShowEntityPresentation) {
+        Log.d("tes", tvShow.firstAirDate + " " + tvShow.name)
+        tv_title_tvshow.text = tvShow.name
+        date_tvshow.text = tvShow.firstAirDate
 
-        rating.text = tvshow.rate.toString()
-        tv_content_tvshow.text = tvshow.overview
+        rating.text = tvShow.rate.toString()
+        tv_content_tvshow.text = tvShow.overview
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500/"+tvshow.backdropPath)
+            .load("https://image.tmdb.org/t/p/w500/"+tvShow.backdropPath)
             .apply(
                 RequestOptions.placeholderOf(com.example.moviecataloge.R.drawable.ic_loading)
                     .error(com.example.moviecataloge.R.drawable.ic_error)
             )
             .into(img_tvshow_main)
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500/"+tvshow.posterPath)
+            .load("https://image.tmdb.org/t/p/w500/"+tvShow.posterPath)
             .apply(
                 RequestOptions.placeholderOf(com.example.moviecataloge.R.drawable.ic_loading)
                     .error(com.example.moviecataloge.R.drawable.ic_error)
             )
             .into(img_tvshow_second)
-        val state=tvshow.isFavorite
+        val state=tvShow.isFavorite
         setFavoriteState(state)
     }
 

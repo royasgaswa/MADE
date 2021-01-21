@@ -32,4 +32,11 @@ class FavoriteFragment : Fragment() {
 
 
     }
+
+    override fun onDestroyView() {
+        view_pager?.let {
+            it.adapter=null
+        }
+        super.onDestroyView()
+    }
 }

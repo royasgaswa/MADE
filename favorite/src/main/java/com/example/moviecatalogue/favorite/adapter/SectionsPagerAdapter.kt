@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.moviecataloge.R
 import com.example.moviecatalogue.favorite.movie.FavoriteMovieFragment
-import com.example.moviecatalogue.favorite.tvshow.FavoriteTvshowFragment
+import com.example.moviecatalogue.favorite.tvshow.FavoriteTvShowFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
@@ -24,7 +24,7 @@ class SectionsPagerAdapter(private val mContext: Fragment, fm: FragmentManager) 
     override fun getItem(position: Int): Fragment =
         when (position) {
             0 -> FavoriteMovieFragment()
-            1 -> FavoriteTvshowFragment()
+            1 -> FavoriteTvShowFragment()
             else -> Fragment()
         }
 

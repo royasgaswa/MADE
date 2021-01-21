@@ -2,7 +2,7 @@ package com.example.moviecatalogue.core.domain.usecase
 
 import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.model.MovieEntityDomain
-import com.example.moviecatalogue.core.domain.model.TvshowEntityDomain
+import com.example.moviecatalogue.core.domain.model.TvShowEntityDomain
 import com.example.moviecatalogue.core.domain.repository.ICatalogueRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -15,11 +15,11 @@ class CatalogueInteractor(private val catalogueRepository: ICatalogueRepository)
         return catalogueRepository.getDetailMovie(movieId)
     }
 
-    override fun getAllTvshows(): Flow<Resource<List<TvshowEntityDomain>>> {
+    override fun getAllTvshows(): Flow<Resource<List<TvShowEntityDomain>>> {
         return catalogueRepository.getAllTvshows()
     }
 
-    override fun getDetailTvshow(tvshowId: Int?): Flow<Resource<TvshowEntityDomain>> {
+    override fun getDetailTvshow(tvshowId: Int?): Flow<Resource<TvShowEntityDomain>> {
         return catalogueRepository.getDetailTvshow(tvshowId)
     }
 
@@ -27,7 +27,7 @@ class CatalogueInteractor(private val catalogueRepository: ICatalogueRepository)
         return catalogueRepository.getFavoriteMovie()
     }
 
-    override fun getFavoriteTvshow(): Flow<List<TvshowEntityDomain>> {
+    override fun getFavoriteTvshow(): Flow<List<TvShowEntityDomain>> {
         return catalogueRepository.getFavoriteTvshow()
     }
 
@@ -35,7 +35,7 @@ class CatalogueInteractor(private val catalogueRepository: ICatalogueRepository)
         return catalogueRepository.setFavoriteMovie(movie,state)
     }
 
-    override fun setFavoriteTvshow(tvshow: TvshowEntityDomain, state: Boolean) {
-        return catalogueRepository.setFavoriteTvshow(tvshow, state)
+    override fun setFavoriteTvshow(tvShow: TvShowEntityDomain, state: Boolean) {
+        return catalogueRepository.setFavoriteTvshow(tvShow, state)
     }
 }

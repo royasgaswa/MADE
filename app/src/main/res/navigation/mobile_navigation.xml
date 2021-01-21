@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/navigation_tv"
-        android:name="com.example.moviecatalogue.tvshow.TvshowFragment"
+        android:name="com.example.moviecatalogue.tvshow.TvShowFragment"
         android:label="@string/tvshow"
         tools:layout="@layout/fragment_tvshow" />
 

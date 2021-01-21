@@ -1,6 +1,5 @@
 package com.example.moviecatalogue.core.domain
 
-import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.repository.ICatalogueRepository
 import com.example.moviecatalogue.core.domain.usecase.CatalogueInteractor
 import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase

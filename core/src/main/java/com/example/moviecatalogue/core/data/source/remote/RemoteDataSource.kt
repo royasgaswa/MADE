@@ -5,7 +5,7 @@ import com.example.moviecatalogue.core.BuildConfig
 import com.example.moviecatalogue.core.data.source.remote.network.ApiResponse
 import com.example.moviecatalogue.core.data.source.remote.network.ApiService
 import com.example.moviecatalogue.core.data.source.remote.response.movie.MovieResponse
-import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvshowResponse
+import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvShowResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -30,7 +30,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getTvshow(): Flow<ApiResponse<List<TvshowResponse?>>> {
+    suspend fun getTvshow(): Flow<ApiResponse<List<TvShowResponse?>>> {
         return flow {
             try {
                 val response=apiService.getTvshow(BuildConfig.API_KEY)

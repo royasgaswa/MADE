@@ -11,12 +11,10 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        Handler().postDelayed(object :Runnable{
-            override fun run() {
-                val intent=Intent(this@SplashScreen,MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        },2000)
+        Handler().postDelayed({
+            val intent = Intent(this@SplashScreen, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 2000)
     }
 }

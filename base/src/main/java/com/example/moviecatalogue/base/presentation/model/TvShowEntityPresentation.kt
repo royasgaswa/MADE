@@ -1,10 +1,10 @@
-package com.example.moviecatalogue.core.domain.model
+package com.example.moviecatalogue.base.presentation.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TvshowEntityDomain(
+data class TvShowEntityPresentation (
     val id: Int? = null,
     val name: String? = null,
     val firstAirDate: String? = null,
@@ -13,4 +13,4 @@ data class TvshowEntityDomain(
     val posterPath: String? = null,
     val backdropPath: String? = null,
     val isFavorite:Boolean
-) : Parcelable
+    ):Parcelable

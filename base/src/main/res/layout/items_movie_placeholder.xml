@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardMaxElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_movie_photo"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@string/image_recycler"
+            android:scaleType="centerCrop"
+            android:transitionName="@string/sharedView"
+            android:background="#DDDDDD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.024"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.005" />
+
+        <TextView
+            android:id="@+id/tv_movie_rating"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:background="#4D000000"
+            android:drawablePadding="4dp"
+            android:elevation="2dp"
+            android:padding="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#4D000000"
+            app:layout_constraintBottom_toTopOf="@+id/tv_title_movie"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_movie_photo"
+            app:layout_constraintTop_toTopOf="@+id/img_movie_photo"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#4D000000"
+            android:elevation="2dp"
+            android:padding="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#DDDDDD"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_photo"
+            app:layout_constraintEnd_toEndOf="@+id/img_movie_photo"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/img_movie_photo"
+            app:layout_constraintTop_toTopOf="@+id/img_movie_photo"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_title_movie"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:background="#4D000000"
+            android:drawablePadding="4dp"
+            android:elevation="2dp"
+            android:padding="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#4D000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_photo"
+            app:layout_constraintEnd_toEndOf="@+id/img_movie_photo"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_movie_photo"
+            app:layout_constraintTop_toTopOf="@+id/img_movie_photo"
+            app:layout_constraintVertical_bias="0.946"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

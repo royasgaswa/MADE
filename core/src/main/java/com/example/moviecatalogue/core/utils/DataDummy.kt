@@ -1,10 +1,10 @@
 package com.example.moviecatalogue.core.utils
 
 import com.example.moviecatalogue.core.data.source.remote.response.movie.MovieResponse
-import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvshowResponse
+import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvShowResponse
 import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.model.MovieEntityDomain
-import com.example.moviecatalogue.core.domain.model.TvshowEntityDomain
+import com.example.moviecatalogue.core.domain.model.TvShowEntityDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -159,10 +159,10 @@ object DataDummy {
         }
     }
 
-    fun generateDummyTv(): List<TvshowEntityDomain> {
-        val tv = ArrayList<TvshowEntityDomain>()
+    fun generateDummyTv(): List<TvShowEntityDomain> {
+        val tv = ArrayList<TvShowEntityDomain>()
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 456,
                 "The Simpsons",
                 "1989-12-16",
@@ -174,7 +174,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 2734,
                 "Law & Order: Special Victims Unit",
                 "1999-09-20",
@@ -186,7 +186,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 1668,
                 "Friends",
                 "1994-09-22",
@@ -198,7 +198,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 456,
                 "The Simpsons",
                 "1989-12-17",
@@ -210,7 +210,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 83125,
                 "Cursed",
                 "2020-07-16",
@@ -222,7 +222,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 4614,
                 "NCIS",
                 "2003-09-23",
@@ -234,7 +234,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 1434,
                 "Family Guy",
                 "1999-01-31",
@@ -246,7 +246,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 60735,
                 "The Flash",
                 "2014-10-07",
@@ -258,7 +258,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 1622,
                 "Supernatural",
                 "2005-09-13",
@@ -270,7 +270,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 12971,
                 "Dragon Ball Z",
                 "1989-04-26",
@@ -282,7 +282,7 @@ object DataDummy {
             )
         )
         tv.add(
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 1416,
                 "Grey's Anatomy",
                 "2005-03-27",
@@ -295,7 +295,7 @@ object DataDummy {
         )
         return tv
     }
-    suspend fun getAllDummyTvShow():Flow<Resource<List<TvshowEntityDomain>>>{
+    suspend fun getAllDummyTvShow():Flow<Resource<List<TvShowEntityDomain>>>{
         return flow {
             val result= generateDummyTv()
             if (result.isNotEmpty()){
@@ -344,10 +344,10 @@ object DataDummy {
         return movies
     }
 
-    fun generateRemoteDummyTvshow(): List<TvshowResponse> {
-        val tvshows = ArrayList<TvshowResponse>()
+    fun generateRemoteDummyTvshow(): List<TvShowResponse> {
+        val tvshows = ArrayList<TvShowResponse>()
         tvshows.add(
-            TvshowResponse(
+            TvShowResponse(
                 456,
                 "The Simpsons",
                 "1989-12-16",
@@ -358,7 +358,7 @@ object DataDummy {
             )
         )
         tvshows.add(
-            TvshowResponse(
+            TvShowResponse(
                 2734,
                 "Law & Order: Special Victims Unit",
                 "1999-09-20",
@@ -369,7 +369,7 @@ object DataDummy {
             )
         )
         tvshows.add(
-            TvshowResponse(
+            TvShowResponse(
                 1668,
                 "Friends",
                 "1994-09-22",

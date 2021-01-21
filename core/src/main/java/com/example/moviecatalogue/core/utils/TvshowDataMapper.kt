@@ -1,12 +1,12 @@
 package com.example.moviecatalogue.core.utils
 
 import com.example.moviecatalogue.core.data.source.local.entity.TvshowEntity
-import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvshowResponse
-import com.example.moviecatalogue.core.domain.model.TvshowEntityDomain
+import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvShowResponse
+import com.example.moviecatalogue.core.domain.model.TvShowEntityDomain
 
 
 object TvshowDataMapper {
-    fun mapResponsesToEntities(input: List<TvshowResponse?>): List<TvshowEntity> {
+    fun mapResponsesToEntities(input: List<TvShowResponse?>): List<TvshowEntity> {
         val tvshowList=ArrayList<TvshowEntity>()
         input.map {
             val tvshow= TvshowEntity(
@@ -24,9 +24,9 @@ object TvshowDataMapper {
         return tvshowList
     }
 
-    fun mapEntitiesToDomain(input: List<TvshowEntity>):List<TvshowEntityDomain> =
+    fun mapEntitiesToDomain(input: List<TvshowEntity>):List<TvShowEntityDomain> =
         input.map {
-            TvshowEntityDomain(
+            TvShowEntityDomain(
                 id = it.id,
                 name = it.title,
                 firstAirDate = it.date,
@@ -37,9 +37,9 @@ object TvshowDataMapper {
                 isFavorite = it.favorite
             )
         }
-    fun mapDomainToPresentation(input:List<TvshowEntityDomain>):List<com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation> =
+    fun mapDomainToPresentation(input:List<TvShowEntityDomain>):List<com.example.moviecatalogue.base.presentation.model.TvShowEntityPresentation> =
         input.map {
-            com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation(
+            com.example.moviecatalogue.base.presentation.model.TvShowEntityPresentation(
                 id = it.id,
                 name = it.name,
                 firstAirDate = it.firstAirDate,
@@ -50,7 +50,7 @@ object TvshowDataMapper {
                 isFavorite = it.isFavorite
             )
         }
-    fun mapDomainToEntity(input: TvshowEntityDomain)= TvshowEntity(
+    fun mapDomainToEntity(input: TvShowEntityDomain)= TvshowEntity(
         id =input.id,
         title = input.name,
         date = input.firstAirDate,
@@ -60,7 +60,7 @@ object TvshowDataMapper {
         backdropPath = input.backdropPath,
         favorite = input.isFavorite
     )
-    fun mapPresentationToDomain(input: com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation) = TvshowEntityDomain(
+    fun mapPresentationToDomain(input: com.example.moviecatalogue.base.presentation.model.TvShowEntityPresentation) = TvShowEntityDomain(
         id = input.id,
         name = input.name,
         firstAirDate = input.firstAirDate,

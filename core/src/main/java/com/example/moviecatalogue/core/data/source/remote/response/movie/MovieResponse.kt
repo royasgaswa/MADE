@@ -1,10 +1,7 @@
 package com.example.moviecatalogue.core.data.source.remote.response.movie
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 data class MovieResponse(
     @field:SerializedName("id")
     val id: Int? = null,
@@ -27,4 +24,4 @@ data class MovieResponse(
     @field:SerializedName("vote_average")
     val rate: String? = null
 
-) : Parcelable
+)

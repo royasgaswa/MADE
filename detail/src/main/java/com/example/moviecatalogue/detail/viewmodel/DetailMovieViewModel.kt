@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation
 import com.example.moviecatalogue.core.data.vo.Resource
 import com.example.moviecatalogue.core.domain.model.MovieEntityDomain
 import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
@@ -20,9 +21,9 @@ class DetailMovieViewModel (val catalogueUseCase: CatalogueUseCase) :
     ViewModel() {
     private var movieId = MutableLiveData<Int>()
     private val _isLoading= MutableLiveData<Boolean>()
-    private val _movie= MutableLiveData<com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation>()
+    private val _movie= MutableLiveData<MovieEntityPresentation>()
     val isLoading: LiveData<Boolean> = _isLoading
-    val movie: LiveData<com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation> = _movie
+    val movie: LiveData<MovieEntityPresentation> = _movie
 
     fun setSelectedMovie(movieId: Int?) {
         this.movieId.value = movieId

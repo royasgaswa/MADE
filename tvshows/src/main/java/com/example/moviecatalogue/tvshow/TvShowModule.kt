@@ -5,6 +5,6 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 @ExperimentalCoroutinesApi
-val tvshowModule= module {
-    viewModel { TvshowViewModel(get()) }
+val tvShowModule= module {
+    viewModel { TvShowViewModel(get()) }
 }

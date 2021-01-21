@@ -9,10 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecatalogue.favorite.R
 import kotlinx.android.synthetic.main.fragment_favorite_tvshow.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class FavoriteTvshowFragment : Fragment() {
+@ExperimentalCoroutinesApi
+class FavoriteTvShowFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -23,23 +25,30 @@ class FavoriteTvshowFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_favorite_tvshow, container, false)
     }
 
-    private val viewModel: FavoriteTvshowViewModel by viewModel()
+    private val viewModel: FavoriteTvShowViewModel by viewModel()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
             val tvshowFavoriteAdapter =
                 com.example.moviecatalogue.base.presentation.adapter.TvshowAdapter()
             progress_bar.visibility = View.VISIBLE
-            viewModel.getFavoriteTvshow()
+            viewModel.getFavoriteTvShow()
             viewModel.isLoading.observe(viewLifecycleOwner, Observer{ state->
                 if (!state){
                     progress_bar.visibility=View.GONE
                 }
             })
-            viewModel.tvshows.observe(viewLifecycleOwner, Observer{
-                tvshowFavoriteAdapter.setData(it)
-                tvshowFavoriteAdapter.notifyDataSetChanged()
-                rv_favorite_tvshow.scheduleLayoutAnimation()
+            viewModel.tvShows.observe(viewLifecycleOwner, Observer{
+
+                if (it.isNotEmpty()){
+                    pg_empty.visibility=View.VISIBLE
+                    tvshowFavoriteAdapter.setData(it)
+                    tvshowFavoriteAdapter.notifyDataSetChanged()
+                    rv_favorite_tvshow.scheduleLayoutAnimation()
+                }else{
+                    pg_empty.visibility=View.VISIBLE
+                }
+
             })
 
 
